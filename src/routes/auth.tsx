@@ -43,7 +43,7 @@ function AuthPage() {
         error.message.includes("Invalid") ? "Nome ou senha incorretos." : error.message;
       return toast.error(msg);
     }
-    navigate({ to: "/galeria" });
+    return void navigate({ to: "/galeria" });
   }
 
   return (

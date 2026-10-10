@@ -7,10 +7,10 @@ export const PLANS: { id: PlanId; name: string; bytes: number; price: number }[]
   { id: "tb2", name: "2 TB", bytes: 2 * 1024 ** 4, price: 7.99 },
 ];
 
-export const getPlan = (id: string) => PLANS.find((p) => p.id === id) ?? PLANS[0];
+export const getPlan = (id: string) => PLANS.find((p) => p.id === id) ?? PLANS[0]!;
 
 export const effectivePlan = (plan: string, expires: string | null) =>
-  plan !== "free" && expires && new Date(expires) > new Date() ? getPlan(plan) : PLANS[0];
+  plan !== "free" && expires && new Date(expires) > new Date() ? getPlan(plan) : PLANS[0]!;
 
 export const brl = (v: number) => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
