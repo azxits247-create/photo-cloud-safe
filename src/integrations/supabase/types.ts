@@ -14,13 +14,101 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      payments: {
+        Row: {
+          amount: number
+          created_at: string
+          id: string
+          identifier: string | null
+          paid_at: string | null
+          pix_code: string | null
+          plan: string
+          status: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          id?: string
+          identifier?: string | null
+          paid_at?: string | null
+          pix_code?: string | null
+          plan: string
+          status?: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          id?: string
+          identifier?: string | null
+          paid_at?: string | null
+          pix_code?: string | null
+          plan?: string
+          status?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      photos: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          path: string
+          size_bytes: number
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          path: string
+          size_bytes: number
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          path?: string
+          size_bytes?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          id: string
+          plan: string
+          plan_expires_at: string | null
+          username: string
+        }
+        Insert: {
+          created_at?: string
+          id: string
+          plan?: string
+          plan_expires_at?: string | null
+          username: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          plan?: string
+          plan_expires_at?: string | null
+          username?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      effective_plan: { Args: { _uid: string }; Returns: string }
+      plan_limit_bytes: { Args: { _plan: string }; Returns: number }
+      used_bytes: { Args: { _uid: string }; Returns: number }
     }
     Enums: {
       [_ in never]: never
