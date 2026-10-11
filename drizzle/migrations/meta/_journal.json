@@ -8,6 +8,13 @@
       "when": 1791644677500,
       "tag": "0000_migration",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1791729132175,
+      "tag": "0001_add_gb10_plan",
+      "breakpoints": true
     }
   ]
 }

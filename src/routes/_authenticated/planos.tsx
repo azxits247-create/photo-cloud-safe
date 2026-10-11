@@ -42,7 +42,7 @@ function Plans() {
   async function buy(id: PlanId) {
     setLoadingPlan(id);
     try {
-      const c = await create({ data: { plan: id as "gb20" } });
+      const c = await create({ data: { plan: id as "gb10" } });
       setPaid(false);
       setCharge({ ...c, amount: Number(c.amount) });
     } catch (e: any) {
@@ -61,7 +61,7 @@ function Plans() {
         <p className="mt-1 text-muted-foreground">
           Plano atual: <b className="text-foreground">{a?.plan.name ?? "…"}</b>{expires && ` · válido até ${expires}`}. Pagamento mensal via PIX, liberado na hora.
         </p>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {PLANS.map((p) => {
             const current = a?.plan.id === p.id;
             return (
