@@ -1,7 +1,8 @@
-export type PlanId = "free" | "gb20" | "tb1" | "tb2";
+export type PlanId = "free" | "gb10" | "gb20" | "tb1" | "tb2";
 
 export const PLANS: { id: PlanId; name: string; bytes: number; price: number }[] = [
   { id: "free", name: "5 GB", bytes: 5 * 1024 ** 3, price: 0 },
+  { id: "gb10", name: "10 GB", bytes: 10 * 1024 ** 3, price: 1.0 },
   { id: "gb20", name: "20 GB", bytes: 20 * 1024 ** 3, price: 2.0 },
   { id: "tb1", name: "1 TB", bytes: 1024 ** 4, price: 5.99 },
   { id: "tb2", name: "2 TB", bytes: 2 * 1024 ** 4, price: 7.99 },

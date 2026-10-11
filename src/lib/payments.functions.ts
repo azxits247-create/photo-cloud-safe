@@ -6,7 +6,7 @@ import { getPlan } from "./plans";
 
 export const createPixCharge = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((i: unknown) => z.object({ plan: z.enum(["gb20", "tb1", "tb2"]) }).parse(i))
+  .inputValidator((i: unknown) => z.object({ plan: z.enum(["gb10", "gb20", "tb1", "tb2"]) }).parse(i))
   .handler(async ({ data, context }) => {
     const { createCashIn } = await import("./syncpay.server");
     const plan = getPlan(data.plan);
