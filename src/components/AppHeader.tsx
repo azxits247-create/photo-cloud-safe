@@ -17,7 +17,7 @@ export function Logo() {
 export function AppHeader() {
   const navigate = useNavigate();
   return (
-    <header className="sticky top-0 z-20 border-b border-border bg-background/95 backdrop-blur-xl">
+    <header className="sticky top-0 z-20 border-b border-border bg-background">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <Link to="/galeria"><Logo /></Link>
         <span className="text-xs font-semibold text-muted-foreground">Seu espaço na nuvem</span>
