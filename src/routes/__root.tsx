@@ -14,6 +14,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { supabase } from "@/integrations/supabase/client";
 import { Toaster } from "@/components/ui/sonner";
+import { InstallationGate } from "@/components/InstallationGate";
 
 function NotFoundComponent() {
   return (
@@ -79,7 +80,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
+      { name: "theme-color", content: "#F5F8FB" },
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-title", content: "Nimbo" },
+      { name: "apple-mobile-web-app-status-bar-style", content: "default" },
       { title: "Nimbo — Fotos na nuvem" },
       { name: "description", content: "Guarde suas fotos na nuvem com 5 GB grátis." },
       { property: "og:title", content: "Nimbo — Fotos na nuvem" },
@@ -93,6 +98,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" },
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "manifest", href: "/manifest.webmanifest" },
+      { rel: "apple-touch-icon", href: "/icons/nimbo-180.png" },
+      { rel: "icon", href: "/icons/nimbo-192.png", type: "image/png" },
     ],
   }),
   shellComponent: RootShell,
@@ -131,7 +139,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <InstallationGate><Outlet /></InstallationGate>
       <Toaster richColors position="top-center" />
     </QueryClientProvider>
   );

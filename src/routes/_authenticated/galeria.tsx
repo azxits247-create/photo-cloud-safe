@@ -11,7 +11,7 @@ import { useAccount } from "@/lib/useAccount";
 import { formatBytes } from "@/lib/plans";
 
 export const Route = createFileRoute("/_authenticated/galeria")({
-  head: () => ({ meta: [{ title: "Minhas fotos — Nimbo" }, { name: "description", content: "Sua galeria de fotos na nuvem." }] }),
+  head: () => ({ meta: [{ title: "Minhas fotos — Nimbo" }, { name: "description", content: "Sua galeria de fotos na nuvem." }, { property: "og:title", content: "Minhas fotos — Nimbo" }, { property: "og:description", content: "Suas memórias em uma galeria privada na nuvem." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }),
   component: Gallery,
 });
 

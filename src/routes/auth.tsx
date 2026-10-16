@@ -15,6 +15,8 @@ export const Route = createFileRoute("/auth")({
       { name: "description", content: "Entre ou crie sua conta Nimbo com nome de usuário e senha." },
       { property: "og:title", content: "Entrar — Nimbo" },
       { property: "og:description", content: "Entre ou crie sua conta Nimbo." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: AuthPage,

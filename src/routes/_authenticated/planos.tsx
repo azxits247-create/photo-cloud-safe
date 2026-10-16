@@ -13,7 +13,7 @@ import { PLANS, brl, type PlanId } from "@/lib/plans";
 import { createPixCharge, checkPayment } from "@/lib/payments.functions";
 
 export const Route = createFileRoute("/_authenticated/planos")({
-  head: () => ({ meta: [{ title: "Planos — Nimbo" }, { name: "description", content: "Aumente seu espaço na nuvem com pagamento via PIX." }] }),
+  head: () => ({ meta: [{ title: "Planos — Nimbo" }, { name: "description", content: "Aumente seu espaço na nuvem com pagamento via PIX." }, { property: "og:title", content: "Planos — Nimbo" }, { property: "og:description", content: "Escolha seu espaço: de 5 GB grátis até 2 TB, com pagamento via PIX." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }),
   component: Plans,
 });
 
