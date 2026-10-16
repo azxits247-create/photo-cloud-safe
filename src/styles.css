@@ -33,6 +33,8 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-cover-foreground: var(--cover-foreground);
+  --color-cover-badge: var(--cover-badge);
   --color-ring-offset-background: var(--background);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
@@ -46,6 +48,10 @@
 
 :root {
   --radius: 1rem;
+  --cover-foreground: oklch(1 0 0);
+  --cover-badge: oklch(0.2 0.03 250 / 0.55);
+  --install-overlay: linear-gradient(180deg, transparent 15%, oklch(0.16 0.025 240 / 0.12) 40%, oklch(0.16 0.025 240 / 0.9) 100%);
+  --shadow-navigation: 0 8px 32px oklch(0.22 0.04 250 / 0.16);
   --background: oklch(0.975 0.012 230);
   --foreground: oklch(0.22 0.05 250);
   --card: oklch(1 0 0);
@@ -91,7 +97,20 @@
     font-family: var(--font-sans);
     min-height: 100vh;
   }
-  h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  h1, h2, h3 { font-family: var(--font-display); letter-spacing: 0; }
+}
+
+.install-page { min-height: 100svh; background: var(--background); }
+.install-cover { height: min(530px, 67svh); min-height: 370px; }
+.install-scrim { background: var(--install-overlay); }
+.install-step { display: grid; place-items: center; width: 26px; height: 26px; flex-shrink: 0; border-radius: 50%; background: var(--secondary); color: var(--primary); font-weight: 700; }
+.app-pill-nav { position: fixed; bottom: calc(18px + env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 4px; padding: 6px; border-radius: 999px; border: 1px solid var(--border); background: var(--card); box-shadow: var(--shadow-navigation); max-width: calc(100vw - 24px); z-index: 30; }
+body:has(.app-pill-nav) main { padding-bottom: calc(110px + env(safe-area-inset-bottom)); }
+@media (max-width: 640px) {
+  .install-cover { object-position: 38% center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
 
 @utility bg-gradient-primary { background-image: var(--gradient-primary); }
